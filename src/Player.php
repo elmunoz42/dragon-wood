@@ -17,7 +17,32 @@
             $this->captured_cards = $i_captured_cards;
 
         }
+        function addToHand($new_card)
+        {
+            array_push($this->hand, $new_card);
+        }
+        function removeFromHand($new_card)
+        {
+            
+        }
+        function addAttackCards()
+        {
 
+        }
+        function removeSingleAttackCard()
+        {
+
+        }
+        function removeAttackCards()
+        {
+
+        }
+        function setAttackType()
+        {
+
+        }
+
+        // Getters
         function getName()
         {
             return $this->player_name;
