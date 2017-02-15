@@ -84,6 +84,41 @@ class GameManegerTest extends PHPUnit_Framework_TestCase
         var_dump($result->getDeckOfCards());
 
     }
+    function test_removeCard()
+    {
+        // Arrange
+        $test_game = new GameManager();
+        $i_player_name ="Steve";
+        $i_hand = array(new Card(3,"red"));
+        $i_hand2 = new Card(3,"red");
+        $i_attack_cards = array(new Card(2,"red"));
+        $i_attack_type = "strike";
+        $i_captured_cards = array(new Enemy("Goblin",1,2,3,4));
+        $test_player = new Player($i_player_name, $i_hand, $i_attack_cards, $i_attack_type, $i_captured_cards);
+        $test_game->setPlayerOne($test_player);
+        $test_game->setPlayerTwo($test_player);
+        for ($x=0; $x<5; $x++) {
+            $test_game->addToLandscape(new Enemy("Goblin",1,2,3,4));
+        }
+        for ($x=0; $x<5; $x++) {
+            $test_game->addToDeckOfCards(new Card($x,"blue"));
+        }
+        $test_game->addToDeckOfCards($i_hand2);
+        $test_game->setDeckOfOpponents();
+        $test_game->addToPlayedCards($i_hand2);
+        $test_game->removeCardFromDeck($i_hand2);
+
+        // Act
+        $result = $test_game;
+        // Assert
+        $this->assertEquals("Steve", $result->getPlayerOne()->getName());
+        $this->assertEquals("Steve", $result->getPlayerTwo()->getName());
+        $this->assertEquals(array(new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4)), $result->getLandscape());
+        $this->assertEquals(array(new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4)), $result->getDeckOfOpponents());
+        $this->assertEquals(array(new Card(3,"red")), $result->getPlayedCards());
+        $this->assertEquals(array(new Card(0,"blue"), new Card(1,"blue"),new Card(2,"blue"),new Card(3,"blue"),new Card(4,"blue")), $result->getDeckOfCards());
+
+    }
 
 
   }

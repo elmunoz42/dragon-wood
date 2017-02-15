@@ -25,7 +25,18 @@
         function shuffleDeckOfOpponents() {
             shuffle($this->deck_of_opponents);
         }
-
+        function removeCardFromLandscape($card) {
+            $card_position = array_search ( $card , $this->landscape );
+            array_splice ( $this->landscape , $card_position, 1 );
+        }
+        function removeCardFromDeck($card) {
+            $card_position = array_search ( $card , $this->deck_of_cards );
+            array_splice ( $this->deck_of_cards , $card_position, 1 );
+        }
+        function removeCardFromOpponentDeck($card) {
+            $card_position = array_search ( $card , $this->deck_of_opponents );
+            array_splice ( $this->deck_of_opponents , $card_position, 1 );
+        }
 
 
 
