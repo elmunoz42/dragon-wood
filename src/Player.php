@@ -45,9 +45,9 @@
         {
             $this->attack_cards = array();
         }
-        function setAttackType()
+        function setAttackType( $new_attack_type )
         {
-
+            $this->attack_type = $new_attack_type;
         }
 
         // Getters
