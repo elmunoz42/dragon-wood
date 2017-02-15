@@ -132,17 +132,21 @@ class GameManegerTest extends PHPUnit_Framework_TestCase
         $test_player = new Player($i_player_name, $i_hand, $i_attack_cards, $i_attack_type, $i_captured_cards);
         $test_game->setPlayerOne($test_player);
         $test_game->setPlayerTwo($test_player);
-        for ($x=0; $x<5; $x++) {
+        for ($x=0; $x<4; $x++) {
             $test_game->addToLandscape(new Enemy("Goblin",1,2,3,4));
         }
         for ($x=0; $x<5; $x++) {
             $test_game->addToDeckOfCards(new Card($x,"blue"));
         }
+        $new_enemy=new Enemy("Orch",1,2,3,4);
+        $test_game->addToLandscape($new_enemy);
         $test_game->addToDeckOfCards($i_hand2);
         $test_game->setDeckOfOpponents();
         $test_game->addToPlayedCards($i_hand2);
         $test_game->removeCardFromDeck($i_hand2);
         $test_game->tallyScore();
+        $test_game->removeCardFromLandscape($new_enemy);
+        $test_game->refreshLandscape();
         // Act
         $result = $test_game;
         // Assert
@@ -155,7 +159,7 @@ class GameManegerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $result->getPlayerOneScore());
         $this->assertEquals(1, $result->getPlayerTwoScore());
         $this->assertEquals(true, $result->attack($result->getPlayerOne(), $result->getLandscape()[0]));
-
+        $this->assertEquals("Goblin", $result->getLandscape()[4]->getName());
     }
 
   }

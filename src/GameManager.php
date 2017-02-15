@@ -32,10 +32,7 @@
         function shuffleDeckOfOpponents() {
             shuffle($this->deck_of_opponents);
         }
-        function removeCardFromLandscape($card) {
-            $card_position = array_search ( $card , $this->landscape );
-            array_splice ( $this->landscape , $card_position, 1 );
-        }
+
         function removeCardFromDeck($card) {
             $card_position = array_search ( $card , $this->deck_of_cards );
             array_splice ( $this->deck_of_cards , $card_position, 1 );
@@ -44,7 +41,7 @@
             $card_position = array_search ( $card , $this->deck_of_opponents );
             array_splice ( $this->deck_of_opponents , $card_position, 1 );
         }
-    
+
         function tallyScore()
         {
             $p_one_captured = $this->player_one->getCapturedCards();
@@ -130,7 +127,7 @@
         {
             $this->player_two = $player_object;
         }
-
+        // Landscape
         function getLandscape()
         {
             return $this->landscape;
@@ -138,6 +135,19 @@
         function addToLandscape($enemy_object)
         {
             array_push($this->landscape, $enemy_object);
+        }
+        function removeCardFromLandscape($card) {
+            $card_position = array_search ( $card , $this->landscape );
+            array_splice ( $this->landscape , $card_position, 1 );
+        }
+        function refreshLandscape()
+        {
+            $landscape_size = count($this->getLandscape());
+            for ($x=0; $x<(5-$landscape_size); $x++){
+                $cards_to_pop = $this->getDeckOfOpponents();
+                $cards_poped = array_pop($cards_to_pop);
+                $this->addToLandscape($cards_poped);
+            }
         }
         function addToDeckOfCards($card)
         {
