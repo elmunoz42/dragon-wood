@@ -18,6 +18,17 @@
         {
 
         }
+        // methods
+        function shuffleDeckOfCards() {
+            shuffle($this->deck_of_cards);
+        }
+        function shuffleDeckOfOpponents() {
+            shuffle($this->deck_of_opponents);
+        }
+
+
+
+
         // Setters and Getters
         function setPlayerOne($player_object)
         {
