@@ -154,9 +154,9 @@ class GameManegerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(new Card(0,"blue"), new Card(1,"blue"),new Card(2,"blue"),new Card(3,"blue"),new Card(4,"blue")), $result->getDeckOfCards());
         $this->assertEquals(1, $result->getPlayerOneScore());
         $this->assertEquals(1, $result->getPlayerTwoScore());
+        $this->assertEquals(true, $result->attack($result->getPlayerOne(), $result->getLandscape()[0]));
 
     }
-
 
   }
   ?>

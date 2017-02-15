@@ -44,15 +44,7 @@
             $card_position = array_search ( $card , $this->deck_of_opponents );
             array_splice ( $this->deck_of_opponents , $card_position, 1 );
         }
-        function diceRoll($size)
-        {
-            $roll = rand(1, $size);
-            $this->dice_roll = $roll;
-        }
-        function getDiceRoll()
-        {
-            return $this->dice_roll;
-        }
+    
         function tallyScore()
         {
             $p_one_captured = $this->player_one->getCapturedCards();
@@ -68,7 +60,43 @@
             }
             $this->setPlayerTwoScore($p_two_sum);
         }
+        function attack($player, $card)
+        {
 
+            $attack_total = 0;
+            $total_number_of_rolls = count($player->getAttackCards());
+            for ($x=0; $x<$total_number_of_rolls; $x++){
+                $attack_total += rand(1,6);
+            }
+            $attack_type = $player->getAttackType();
+            echo $attack_total;
+            echo $attack_type;
+            switch ($attack_type) {
+                case ("strike"):
+                    if ($attack_total >= $card->getStrikeReq()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                case ("stomp"):
+                    if ($attack_total >= $card->getStompReq()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                case ("shout"):
+                    if ($attack_total >= $card->getShoutReq()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                default:
+                    return false;
+            }
+        }
         // Setters and Getters
         function setPlayerOneScore($score)
         {
