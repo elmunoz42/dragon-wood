@@ -2,16 +2,20 @@
 require_once "src/Card.php";
 class CardTest extends PHPUnit_Framework_TestCase
 {
-    // Check string for 1 letter words.
-    // ex. String = "hall", anagram = "a"
+
     function test_checkCard1()
     {
-        //Arrange
-        $testWord = "a";
-        $anagramList = ['a'];
-        $test_Card = new Card($testWord, $anagramList);
-        //Act
-        $result = $test_Card->createCards();
-        //Assert
-        $this->assertEquals(["a"], $result);
+        // Arrange
+        $input_number = 1;
+        $input_color = "blue";
+        $test_card = new Card($input_number, $input_color);
+
+        // Act
+        $result = $test_card;
+
+        // Assert
+        $this->assertEquals(1, $result->getNumber());
+        $this->assertEquals("blue", $result->getColor());
     }
+}
+?>
