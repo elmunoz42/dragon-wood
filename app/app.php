@@ -9,8 +9,13 @@
         'twig.path' => __DIR__.'/../web/views'
     ));
     $app->get("/", function() use ($app) {
-    return $app['twig']->render();
+    return $app['twig']->render('game-setup.html.twig');
     });
+
+    $app->post("/action", function() use ($app) {
+    return $app['twig']->render('game-action.html.twig', array(''));
+    });
+
 
     return $app;
  ?>
