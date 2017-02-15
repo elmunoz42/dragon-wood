@@ -18,7 +18,7 @@
         {
 
         }
-
+        // Setters and Getters
         function setPlayerOne($player_object)
         {
             $this->player_one = $player_object;
@@ -26,6 +26,51 @@
         function getPlayerOne()
         {
             return $this->player_one;
+        }
+        function getPlayerTwo()
+        {
+            return $this->player_two;
+        }
+        function setPlayerTwo($player_object)
+        {
+            $this->player_two = $player_object;
+        }
+
+        function getLandscape()
+        {
+            return $this->landscape;
+        }
+        function addToLandscape($enemy_object)
+        {
+            array_push($this->landscape, $enemy_object);
+        }
+        function addToDeckOfCards($card)
+        {
+            array_push($this->deck_of_cards, $card);
+        }
+        function getDeckOfCards()
+        {
+            return $this->deck_of_cards;
+        }
+        //
+        function getDeckOfOpponents()
+        {
+            return $this->deck_of_opponents;
+        }
+        function setDeckOfOpponents()
+        {
+            // $enemy_type = array("Orch",
+            for ($x=0; $x<2; $x++) {
+                array_push($this->deck_of_opponents, new Enemy("Goblin",1,2,3,4));
+            }
+        }
+        function getPlayedCards()
+        {
+
+        }
+        function addToPlayedCards()
+        {
+
         }
     }
 
