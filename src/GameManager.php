@@ -66,11 +66,11 @@
         }
         function getPlayedCards()
         {
-
+            return $this->played_cards;
         }
-        function addToPlayedCards()
+        function addToPlayedCards($card)
         {
-
+            array_push($this->played_cards, $card);
         }
     }
 

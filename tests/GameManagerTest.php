@@ -37,6 +37,7 @@ class GameManegerTest extends PHPUnit_Framework_TestCase
         }
         $test_game->addToDeckOfCards(new Card(1,"blue"));
         $test_game->setDeckOfOpponents();
+        $test_game->addToPlayedCards(new Card(1,"blue"));
 
         // Act
         $result = $test_game;
@@ -46,6 +47,8 @@ class GameManegerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4)), $result->getLandscape());
         $this->assertEquals(array(new Card(1,"blue")), $result->getDeckOfCards());
         $this->assertEquals(array(new Enemy("Goblin",1,2,3,4), new Enemy("Goblin",1,2,3,4)), $result->getDeckOfOpponents());
+        $this->assertEquals(array(new Card(1,"blue")), $result->getPlayedCards());
+
     }
 
   }
