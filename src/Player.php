@@ -37,7 +37,7 @@
         }
         function removeAttackCards()
         {
-
+            $this->attack_cards = array();
         }
         function setAttackType()
         {
