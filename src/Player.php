@@ -30,9 +30,10 @@
         {
             array_push($this->attack_cards, $new_card);
         }
-        function removeSingleAttackCard()
+        function removeSingleAttackCard($new_card)
         {
-
+            $card_position = array_search ( $new_card , $this->attack_cards );
+            array_splice ( $this->attack_cards , $card_position, 1 );
         }
         function removeAttackCards()
         {
