@@ -182,5 +182,35 @@ class PlayerTest extends PHPUnit_Framework_TestCase
             //getCapturedCards
         $this->assertEquals(array(new Enemy("Goblin",1,2,3,4)), $result->getCapturedCards());
     }
+    function test_addToCapturedCards()
+    {
+        // Arrange
+        $i_player_name = "Steve";
+        $i_card_1 = new Card(1,"blue");
+        $i_card_2 = new Card(2,"burgundy");
+        $i_card_3 = new Card(1,"blue");
+        $i_card_4 = new Card(2,"burgundy");
+        $i_hand = array($i_card_1, $i_card_2);
+        $i_attack_cards = array();
+        $i_attack_type = "";
+        $i_captured_cards = array(new Enemy("Goblin",1,2,3,4));
+        $test_player = new Player($i_player_name, $i_hand, $i_attack_cards, $i_attack_type, $i_captured_cards);
+        $test_attack_type = $test_player->setAttackType("strike");
+        $test_player->addToCapturedCards(new Enemy("Dragon",1,2,3,4));
+
+        // Act
+        $result=$test_player;
+        // Assert
+            //getName
+        $this->assertEquals("Steve", $result->getName());
+            //getHand
+        $this->assertEquals(array(new Card(1,"blue"), new Card(2,"burgundy")), $result->getHand());
+            //getAttackCards
+        $this->assertEquals(array(), $result->getAttackCards());
+            //getAttackType
+        $this->assertEquals("strike", $result->getAttackType());
+            //getCapturedCards
+        $this->assertEquals(array(new Enemy("Goblin",1,2,3,4), new Enemy("Dragon",1,2,3,4)), $result->getCapturedCards());
+    }
 }
 ?>

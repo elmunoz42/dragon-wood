@@ -21,6 +21,10 @@
         {
             array_push($this->hand, $new_card);
         }
+        function addToCapturedCards($new_card)
+        {
+            array_push($this->captured_cards, $new_card);
+        }
         function removeFromHand($new_card)
         {
             $card_position = array_search ( $new_card , $this->hand );
