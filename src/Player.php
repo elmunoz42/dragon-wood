@@ -23,14 +23,12 @@
         }
         function removeFromHand($new_card)
         {
-            var_dump($this->hand);
             $card_position = array_search ( $new_card , $this->hand );
             array_splice ( $this->hand , $card_position, 1 );
-            var_dump($this->hand);
         }
-        function addAttackCards()
+        function addAttackCards($new_card)
         {
-
+            array_push($this->attack_cards, $new_card);
         }
         function removeSingleAttackCard()
         {
