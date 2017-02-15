@@ -103,7 +103,7 @@ class PlayerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("strike", $result->getAttackType());
         $this->assertEquals(array(new Enemy("Goblin",1,2,3,4)), $result->getCapturedCards());
     }
-    function test_removeAttackCards()
+    function test_clearAttackCards()
     {
         // Arrange
         $i_player_name = "Steve";
@@ -114,7 +114,7 @@ class PlayerTest extends PHPUnit_Framework_TestCase
         $i_attack_type = "strike";
         $i_captured_cards = array(new Enemy("Goblin",1,2,3,4));
         $test_player = new Player($i_player_name, $i_hand, $i_attack_cards, $i_attack_type, $i_captured_cards);
-        $test_player->removeAttackCards();
+        $test_player->clearAttackCards();
         // Act
         $result=$test_player;
         // Assert
@@ -122,6 +122,35 @@ class PlayerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(new Card(1,"blue"), new Card(2,"burgundy")), $result->getHand());
         $this->assertEquals(array(), $result->getAttackCards());
         $this->assertEquals("strike", $result->getAttackType());
+        $this->assertEquals(array(new Enemy("Goblin",1,2,3,4)), $result->getCapturedCards());
+    }
+    function test_removeAttackCards()
+    {
+        // Arrange
+        $i_player_name = "Steve";
+        $i_card_1 = new Card(1,"blue");
+        $i_card_2 = new Card(2,"burgundy");
+        $i_card_3 = new Card(1,"blue");
+        $i_card_4 = new Card(2,"burgundy");
+        $i_hand = array($i_card_1, $i_card_2, $i_card_3, $i_card_4);
+        $i_attack_cards = array($i_card_1, $i_card_2);
+        $i_attack_type = "strike";
+        $i_captured_cards = array(new Enemy("Goblin",1,2,3,4));
+        $test_player = new Player($i_player_name, $i_hand, $i_attack_cards, $i_attack_type, $i_captured_cards);
+        $test_player->removeAttackCards();
+        $test_player->clearAttackCards();
+        // Act
+        $result=$test_player;
+        // Assert
+            //getName
+        $this->assertEquals("Steve", $result->getName());
+            //getHand
+        $this->assertEquals(array(new Card(1,"blue"), new Card(2,"burgundy")), $result->getHand());
+            //getAttackCards
+        $this->assertEquals(array(), $result->getAttackCards());
+            //getAttackType
+        $this->assertEquals("strike", $result->getAttackType());
+            //getCapturedCards
         $this->assertEquals(array(new Enemy("Goblin",1,2,3,4)), $result->getCapturedCards());
     }
 }

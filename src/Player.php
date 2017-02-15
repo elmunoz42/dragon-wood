@@ -37,6 +37,12 @@
         }
         function removeAttackCards()
         {
+            foreach ( $this->attack_cards as $card ) {
+                $this->removeFromHand($card);
+            }
+        }
+        function clearAttackCards()
+        {
             $this->attack_cards = array();
         }
         function setAttackType()
