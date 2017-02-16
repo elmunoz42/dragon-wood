@@ -89,6 +89,25 @@
                         <p>
                             Landscape
                         </p>
+                        <p>
+                            {% for card in gameManager.getLandscape %}
+                                <div class="col-sm-3">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h2 class="panel-title"> {{ card.getName }}</h2>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>
+                                                Strike: {{ card.getStrikeReq }} <br>
+                                                Stomp: {{ card.getStompReq }} <br>
+                                                Shout: {{ card.getShoutReq }} <br>
+                                            </p>
+                                            <h3 class="text-center">Value: {{ card.getValue }}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </p>
                     </div>
                 </div>
                 <!-- col -->
